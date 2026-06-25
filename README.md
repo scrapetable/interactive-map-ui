@@ -2,10 +2,12 @@
 
 Search Google Maps businesses by panning a map and querying the [ScrapeTable Maps API](https://www.scrapetable.com/dashboard/api/docs). Results show on the map and in a sidebar with contact details. Searches are saved locally to `./data/`.
 
+**Repository:** [github.com/scrapetable/interactive-map-ui](https://github.com/scrapetable/interactive-map-ui)
+
 ## Quick start
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/scrapetable/interactive-map-ui.git
 cd interactive-map-ui
 npm install
 cp .env.example .env.local
