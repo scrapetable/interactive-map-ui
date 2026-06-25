@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ScrapeTable Interactive Map Search
 
-## Getting Started
+Search Google Maps businesses by panning a map and querying the [ScrapeTable Maps API](https://www.scrapetable.com/dashboard/api/docs). Results show on the map and in a sidebar with contact details. Searches are saved locally to `./data/`.
 
-First, run the development server:
+## Quick start
+
+```bash
+git clone <repo-url>
+cd interactive-map-ui
+npm install
+cp .env.example .env.local
+```
+
+Add your API key to `.env.local`:
+
+```env
+SCRAPETABLE_API_KEY=scr_your_key_here
+```
+
+Or paste it in **Settings** in the app (stored in browser localStorage).
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Pan/zoom the map to your search area.
+2. Enter a query (e.g. `coffee`) and click **Search**.
+3. Browse results in the sidebar or on the map.
+4. Reload past searches from the **History** tab (no extra API credits).
 
-## Learn More
+## Settings
 
-To learn more about Next.js, take a look at the following resources:
+| Parameter | Default | Notes |
+|-----------|---------|-------|
+| Limit | 20 | 1–500. 1 credit per business returned. |
+| Zoom | current map zoom | Affects search radius |
+| Language | English | Result language |
+| Country | United States | Country bias |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Local data
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Search results are saved to `./data/` (git-ignored):
 
-## Deploy on Vercel
+```
+data/
+  history.json
+  searches/<id>__<query>.json
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run dev
+npm run build
+npm run start
+npm run lint
+```
+
+## Requirements
+
+- Node.js 18+
+- [ScrapeTable API key](https://www.scrapetable.com/dashboard/api/docs)
